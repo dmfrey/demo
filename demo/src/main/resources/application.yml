@@ -1,0 +1,25 @@
+
+logging.level:
+  org.springframework.amqp: DEBUG
+  org.springframework.data.redis: DEBUG
+  org.springframework.cloud.stream: DEBUG
+  com.example.demo: DEBUG
+
+server:
+  port: 9080
+
+spring:
+  application:
+    name: test
+
+  cloud:
+
+    stream:
+
+      function:
+        definition: listener
+
+      bindings:
+        listener-in-0:
+          destination: listener.messages
+          group: ${spring.application.name}
